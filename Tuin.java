@@ -14,6 +14,7 @@ class Tuin {
         System.out.println("Welkom in mijn tuin.");
         Sproeier slangetje = new Sproeier();
         TuinDomotica slimmeSchakelaar = new TuinDomotica();
+        Zonnescherm zScherm = new Zonnescherm();
         String input = "";
         do
         {
@@ -21,7 +22,19 @@ class Tuin {
             System.out.println("Regent het (JA/NEE)");
             input = reader.readLine();
             slimmeSchakelaar.setRegen(input.equalsIgnoreCase("JA"));
-
+            zScherm.setRegen(input.equalsIgnoreCase("JA"));
+            
+            System.out.println("Is er daglicht (JA/NEE)");
+            input = reader.readLine();
+            slimmeSchakelaar.setDaglicht(input.equalsIgnoreCase("JA"));
+            zScherm.setDaglicht(input.equalsIgnoreCase("JA"));
+            slimmeSchakelaar.domoticaRun();
+            
+            System.out.println("Wilt u de zonnescherm aan (JA/NEE)");
+            input = reader.readLine();
+            zScherm.setStand(input.equalsIgnoreCase("JA"));
+            zScherm.zonneschermRun();
+            
             System.out.print("Wilt u stoppen (JA/NEE)");
             input = reader.readLine();
 

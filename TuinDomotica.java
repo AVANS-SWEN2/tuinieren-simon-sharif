@@ -1,18 +1,43 @@
 public class TuinDomotica {
-    private Boolean daglicht;
-    private Boolean regen;
+    private boolean daglicht;
+    private boolean regen;
     private Schakelaar slimmeschakelaar;
-
+    private Sproeier sproeier;
+    
     public TuinDomotica() {
         super();
+        sproeier = new Sproeier();
         slimmeschakelaar = Schakelaar.AUTOMATISCH;
     }
     
-    public Boolean getDaglicht() {
+    public void domoticaRun() {
+    	switch(slimmeschakelaar) {
+    	
+    	case AUTOMATISCH: 
+    		if (daglicht == false && regen == false) {
+    			sproeier.sproeien();
+    		}
+    		break;
+    	
+    	case AAN:
+			sproeier.sproeien();
+    		break;
+    	
+    	case UIT:
+    		break;
+    	}
+    }
+    
+
+	public void setDaglicht(boolean daglicht) {
+		this.daglicht = daglicht;
+	}
+	
+    public boolean getDaglicht() {
         return daglicht;
     }
 
-    public Boolean getRegen() {
+    public boolean getRegen() {
         return regen;
     }
     public void setRegen(Boolean regen) {
@@ -23,7 +48,7 @@ public class TuinDomotica {
         return slimmeschakelaar;
     }
 
-    public void setSlimmeschakelaar(schakelaar slimmeschakelaar) {
+    public void setSlimmeschakelaar(Schakelaar slimmeschakelaar) {
         this.slimmeschakelaar = slimmeschakelaar;
     }
 }
